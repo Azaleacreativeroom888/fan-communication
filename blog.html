@@ -96,112 +96,108 @@
   }
 
   .page-hero {
-    padding: clamp(48px, 8vw, 84px) clamp(20px, 6vw, 56px) clamp(24px, 5vw, 48px);
-    max-width: 1100px;
+    padding: clamp(48px, 8vw, 84px) clamp(20px, 6vw, 56px) clamp(24px, 5vw, 40px);
+    max-width: 720px;
     margin: 0 auto;
   }
 
-  .kicker-graphic {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 22px;
-  }
-  .kicker-graphic span {
-    width: 9px; height: 9px; border-radius: 50%;
-    background: var(--blue-500);
-  }
+  .kicker-graphic { display: flex; gap: 8px; margin-bottom: 22px; }
+  .kicker-graphic span { width: 9px; height: 9px; border-radius: 50%; background: var(--blue-500); }
   .kicker-graphic span:nth-child(odd) { background: var(--yellow-400); }
 
   h1.page-title {
     font-family: var(--font-head);
     font-weight: 800;
-    font-size: clamp(2rem, 5vw, 3.1rem);
-    margin: 0 0 18px;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin: 0 0 16px;
   }
 
   .page-lede {
-    max-width: 60ch;
     color: var(--slate-400);
-    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    font-size: clamp(0.98rem, 1.4vw, 1.08rem);
     margin: 0;
   }
 
-  section.list-section {
+  section.feed-section {
     padding: 0 clamp(20px, 6vw, 56px) clamp(64px, 9vw, 100px);
   }
 
-  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section-inner { max-width: 720px; margin: 0 auto; }
 
-  .entry-list {
+  .feed {
     display: flex;
     flex-direction: column;
   }
 
-  .entry {
-    display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 24px;
-    padding: 30px 4px;
+  .post {
+    display: flex;
+    gap: 14px;
+    padding: 22px 4px;
     border-bottom: 1px solid rgba(143,177,255,0.14);
-    text-decoration: none;
-    color: var(--ivory-100);
-    transition: background 0.2s ease;
   }
-  .entry:first-child { padding-top: 4px; }
-  .entry:hover, .entry:focus-visible { background: rgba(143,177,255,0.05); }
+  .post:first-child { padding-top: 4px; }
 
-  .entry-meta {
+  .post-avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .post-body { flex: 1; min-width: 0; }
+
+  .post-head {
     display: flex;
-    flex-direction: column;
+    align-items: baseline;
     gap: 8px;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
   }
 
-  .entry-dot {
-    width: 12px; height: 12px; border-radius: 50%;
-    background: var(--yellow-400);
-    margin-bottom: 2px;
+  .post-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 0.94rem;
   }
-  .entry:nth-child(even) .entry-dot { background: var(--blue-500); }
 
-  .entry-date {
-    font-size: 0.78rem;
+  .post-handle {
+    font-size: 0.82rem;
+    color: var(--slate-400);
+  }
+
+  .post-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--slate-400);
+  }
+
+  .post-time {
+    font-size: 0.82rem;
     color: var(--slate-400);
     font-variant-numeric: tabular-nums;
   }
 
-  .entry-body h2 {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1.18rem;
-    margin: 0 0 10px;
+  .post-text {
+    font-size: 1rem;
+    color: var(--ivory-100);
+    margin: 0;
+    white-space: pre-wrap;
   }
 
-  .entry-body p {
-    margin: 0 0 12px;
-    color: var(--slate-400);
-    font-size: 0.95rem;
-  }
-
-  .entry-tag {
+  .post-tag {
     display: inline-block;
-    font-size: 0.76rem;
+    margin-top: 10px;
+    font-size: 0.78rem;
     color: var(--yellow-300);
     font-weight: 700;
   }
-
-  @media (max-width: 640px) {
-    .entry { grid-template-columns: 1fr; gap: 10px; }
-    .entry-meta { flex-direction: row; align-items: center; gap: 10px; }
-  }
+  .post:nth-child(even) .post-tag { color: var(--blue-300); }
 
   .empty-note {
-    margin-top: 40px;
-    padding: 22px 24px;
+    margin-top: 32px;
+    padding: 20px 22px;
     border: 1px dashed rgba(143,177,255,0.3);
     border-radius: 14px;
     color: var(--slate-400);
-    font-size: 0.92rem;
+    font-size: 0.9rem;
   }
 
   footer {
@@ -243,68 +239,70 @@
     </div>
     <h1 class="page-title">ブログ</h1>
     <p class="page-lede">
-      日々気づいたこと、読んだもの、考えの途中経過をそのまま置く場所。
-      コラムほど整えず、思考の粒のまま記録しています。
+      日々気づいたことを、一言でそのまま置く場所。まとめず、削らず、思いついた粒のまま。
     </p>
   </div>
 
-  <section class="list-section">
+  <section class="feed-section">
     <div class="section-inner">
-      <div class="entry-list">
+      <div class="feed">
 
-        <a class="entry" href="#">
-          <div class="entry-meta">
-            <span class="entry-dot" aria-hidden="true"></span>
-            <span class="entry-date">2026.09.21</span>
+        <div class="post">
+          <svg class="post-avatar" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="17" fill="var(--yellow-400)"/>
+            <path d="M20 20 L34 12 A17 17 0 1 1 34 28 Z" fill="var(--navy-900)"/>
+          </svg>
+          <div class="post-body">
+            <div class="post-head">
+              <span class="post-time">2026.09.18</span>
+            </div>
+            <p class="post-text">コミュニケーション学って聞くと会話中心なのかな？って思うかもしれないけど、
+              コミュニケーション学ってマスメディアも入ってるからSNSとかの勉強もしていく予定。</p>
           </div>
-          <div class="entry-body">
-            <span class="entry-tag">雑感</span>
-            <p>いろいろなゲーム配信者を観て思ったのが、どの人の動画を観るかでその人の印象が変わってくる。つまりその人の性格や主観を通すと相手の印象が変わってくる。
-            ある人の視点では"ただのフレンドリー"が、ある人の視点では"キモく見える"。つまりその人の性格とキャラを知ってないとコミュニケーションは円滑にならないんだなって。</p>
-          </div>
-        </a>
+        </div>
 
-        <a class="entry" href="#">
-          <div class="entry-meta">
-            <span class="entry-dot" aria-hidden="true"></span>
-            <span class="entry-date">2026.09.20</span>
+        <div class="post">
+          <svg class="post-avatar" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="17" fill="var(--blue-500)"/>
+            <path d="M20 20 L34 12 A17 17 0 1 1 34 28 Z" fill="var(--navy-900)"/>
+          </svg>
+          <div class="post-body">
+            <div class="post-head">
+              <span class="post-time">2026.09.15 09:12</span>
+            </div>
+            <p class="post-text">既読スルーって、それ自体が立派なフィードバックなんだよな。</p>
           </div>
-          <div class="entry-body">
-            <span class="entry-tag">雑感</span>
-            <p>コミュニケーションにおいては不安になることが現実になるから、いっそのこと気にしないほうがいいのかもしれない。
-            相手の良いところをちゃんと観察するようにすると楽。</p>
-          </div>
-        </a>
+        </div>
 
-        <a class="entry" href="#">
-          <div class="entry-meta">
-            <span class="entry-dot" aria-hidden="true"></span>
-            <span class="entry-date">2026.09.10</span>
+        <div class="post">
+          <svg class="post-avatar" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="17" fill="var(--yellow-400)"/>
+            <path d="M20 20 L34 12 A17 17 0 1 1 34 28 Z" fill="var(--navy-900)"/>
+          </svg>
+          <div class="post-body">
+            <div class="post-head">
+              <span class="post-time">2026.09.10 18:03</span>
+            </div>
+            <p class="post-text">翻訳してると、直訳と意訳のあいだで毎回迷う。これも一種の解釈のせめぎ合い。</p>
           </div>
-          <div class="entry-body">
-            <span class="entry-tag">翻訳メモ</span>
-            <h2>訳すたびに、ニュアンスがひとつ削れていく感覚について</h2>
-            <p>英日翻訳の授業で扱った文を自分なりに訳してみて、失われたものと残ったものをメモ。</p>
-          </div>
-        </a>
+        </div>
 
-        <a class="entry" href="#">
-          <div class="entry-meta">
-            <span class="entry-dot" aria-hidden="true"></span>
-            <span class="entry-date">2026.09.02</span>
+        <div class="post">
+          <svg class="post-avatar" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="17" fill="var(--blue-500)"/>
+            <path d="M20 20 L34 12 A17 17 0 1 1 34 28 Z" fill="var(--navy-900)"/>
+          </svg>
+          <div class="post-body">
+            <div class="post-head">
+              <span class="post-time">2026.09.02 12:20</span>
+            </div>
+            <p class="post-text">沈黙も立派なメッセージ。ゼロを送ってる、というのが正しい気がする。</p>
           </div>
-          <div class="entry-body">
-            <span class="entry-tag">観察</span>
-            <h2>沈黙もメッセージのひとつだと気づいた日</h2>
-            <p>返事が来ないこと自体がフィードバックになる、という当たり前だけど見落としていた話。</p>
-          </div>
-        </a>
+        </div>
 
       </div>
 
-      <p class="empty-note">
-        ここは仮の記事です。実際の投稿に差し替えて使ってください。
-      </p>
+      <p class="empty-note">ここは仮の投稿です。実際の一言に差し替えて使ってください。</p>
     </div>
   </section>
 </main>
