@@ -45,7 +45,7 @@
     background: var(--navy-900);
     color: var(--ivory-100);
     font-family: var(--font-body);
-    line-height: 1.85;
+    line-height: 1.9;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -96,8 +96,8 @@
   }
 
   .page-hero {
-    padding: clamp(48px, 8vw, 84px) clamp(20px, 6vw, 56px) clamp(24px, 5vw, 48px);
-    max-width: 1100px;
+    padding: clamp(48px, 8vw, 84px) clamp(20px, 6vw, 56px) clamp(24px, 5vw, 40px);
+    max-width: 760px;
     margin: 0 auto;
   }
 
@@ -108,117 +108,77 @@
   h1.page-title {
     font-family: var(--font-head);
     font-weight: 800;
-    font-size: clamp(2rem, 5vw, 3.1rem);
-    margin: 0 0 18px;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin: 0 0 16px;
   }
 
   .page-lede {
-    max-width: 60ch;
     color: var(--slate-400);
-    font-size: clamp(1rem, 1.4vw, 1.12rem);
-    margin: 0 0 30px;
+    font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+    margin: 0;
   }
 
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  section.columns-section {
+    padding: 8px clamp(20px, 6vw, 56px) clamp(64px, 9vw, 100px);
   }
 
-  .tag-pill {
-    padding: 7px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(143,177,255,0.3);
-    font-size: 0.82rem;
-    color: var(--slate-400);
-  }
+  .section-inner { max-width: 760px; margin: 0 auto; }
 
-  section.grid-section {
-    padding: 24px clamp(20px, 6vw, 56px) clamp(64px, 9vw, 100px);
+  article.column {
+    padding: clamp(28px, 5vw, 44px) 0;
+    border-bottom: 1px solid rgba(143,177,255,0.14);
   }
+  article.column:first-child { padding-top: 8px; }
 
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-
-  .column-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-  }
-  @media (max-width: 780px) {
-    .column-grid { grid-template-columns: 1fr; }
-  }
-
-  .column-card {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 30px 28px;
-    background: var(--navy-800);
-    border: 1px solid rgba(143,177,255,0.16);
-    border-radius: 18px;
-    text-decoration: none;
-    color: var(--ivory-100);
-    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
-  }
-  .column-card:hover, .column-card:focus-visible {
-    border-color: var(--yellow-400);
-    transform: translateY(-3px);
-    background: var(--navy-700);
-  }
-
-  .card-top {
+  .column-meta {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
   }
 
-  .card-category {
-    font-size: 0.78rem;
+  .column-category {
+    font-size: 0.76rem;
     font-weight: 700;
     color: var(--navy-900);
     background: var(--yellow-400);
-    padding: 5px 12px;
+    padding: 4px 12px;
     border-radius: 999px;
   }
-  .column-card:nth-child(even) .card-category {
+  article.column:nth-child(even) .column-category {
     background: var(--blue-500);
     color: var(--ivory-100);
   }
 
-  .card-date {
-    font-size: 0.78rem;
+  .column-date {
+    font-size: 0.8rem;
     color: var(--slate-400);
     font-variant-numeric: tabular-nums;
   }
 
-  .column-card h2 {
+  article.column h2 {
     font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1.25rem;
-    margin: 0;
+    font-weight: 800;
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+    line-height: 1.5;
+    margin: 0 0 18px;
   }
 
-  .column-card p {
-    margin: 0;
-    color: var(--slate-400);
-    font-size: 0.94rem;
+  article.column p {
+    margin: 0 0 16px;
+    color: var(--ivory-100);
+    font-size: 1rem;
+    max-width: 62ch;
   }
-
-  .card-go {
-    margin-top: auto;
-    font-size: 0.86rem;
-    color: var(--yellow-400);
-    font-weight: 700;
-  }
-  .column-card:nth-child(even) .card-go { color: var(--blue-300); }
+  article.column p:last-child { margin-bottom: 0; }
 
   .empty-note {
-    margin-top: 40px;
-    padding: 22px 24px;
+    margin-top: 36px;
+    padding: 20px 22px;
     border: 1px dashed rgba(143,177,255,0.3);
     border-radius: 14px;
     color: var(--slate-400);
-    font-size: 0.92rem;
+    font-size: 0.9rem;
   }
 
   footer {
@@ -260,66 +220,45 @@
     </div>
     <h1 class="page-title">コラム</h1>
     <p class="page-lede">
-      ある程度まとまった考察や、自分なりの成果物を置く場所。
-      ブログよりも一段落ち着いた形で、時間をかけて考えたことをまとめています。
+      ある程度まとまった考察や、自分なりの成果を置く場所。
+      本文はこのページの上でそのまま読めます。
     </p>
-    <div class="tag-row" aria-hidden="true">
-      <span class="tag-pill">翻訳</span>
-      <span class="tag-pill">物語の構成</span>
-      <span class="tag-pill">会話分析</span>
-      <span class="tag-pill">異文化コミュニケーション</span>
-    </div>
   </div>
 
-  <section class="grid-section">
+  <section class="columns-section">
     <div class="section-inner">
-      <div class="column-grid">
 
-        <a class="column-card" href="#">
-          <div class="card-top">
-            <span class="card-category">翻訳</span>
-            <span class="card-date">2026.09</span>
-          </div>
-          <h2>直訳と意訳のあいだで、何を選んでいるのか</h2>
-          <p>英日翻訳の授業課題を題材に、自分がどんな基準で言葉を選び直しているのかを整理した考察。</p>
-          <span class="card-go">読む →</span>
-        </a>
+      <article class="column">
+        <div class="column-meta">
+          <span class="column-category">翻訳</span>
+          <span class="column-date">2026.09.20</span>
+        </div>
+        <h2>直訳と意訳のあいだで、何を選んでいるのか</h2>
+        <p>英日翻訳の課題で、同じ一文を何通りにも訳し直していて気づいたことがあります。迷っているのは単語ではなく、「誰に向けて、どんな温度で届けたいか」という点でした。</p>
+        <p>直訳は原文への忠実さを守り、意訳は読み手への届きやすさを守る。どちらを優先するかは、結局のところ送り手と受け手のどちらに立つかという選択なのだと思います。</p>
+      </article>
 
-        <a class="column-card" href="#">
-          <div class="card-top">
-            <span class="card-category">物語の構成</span>
-            <span class="card-date">2026.08</span>
-          </div>
-          <h2>マンガのコマ運びは、会話のターンテイキングに似ている</h2>
-          <p>ページをめくるリズムと、会話の間合いの取り方を重ねて考えてみた小さな理論メモ。</p>
-          <span class="card-go">読む →</span>
-        </a>
+      <article class="column">
+        <div class="column-meta">
+          <span class="column-category">物語の構成</span>
+          <span class="column-date">2026.09.06</span>
+        </div>
+        <h2>マンガのコマ運びは、会話のターンテイキングに似ている</h2>
+        <p>会話では、相手の話が終わるタイミングを読んで自分の番に入ります。マンガのコマ割りも、読者の視線が次のコマへ移る「間」を設計している点でよく似ています。</p>
+        <p>大きなコマで一拍置く、細かいコマで畳みかける。これは話すテンポを変えるのと同じ操作で、間の取り方そのものが一種のメッセージになっていると感じます。</p>
+      </article>
 
-        <a class="column-card" href="#">
-          <div class="card-top">
-            <span class="card-category">会話分析</span>
-            <span class="card-date">2026.07</span>
-          </div>
-          <h2>「間」が伝えている情報量について</h2>
-          <p>会話における沈黙や間合いを、ノイズではなく一種のメッセージとして読み解く試み。</p>
-          <span class="card-go">読む →</span>
-        </a>
+      <article class="column">
+        <div class="column-meta">
+          <span class="column-category">会話分析</span>
+          <span class="column-date">2026.08.23</span>
+        </div>
+        <h2>「間」が伝えている情報量について</h2>
+        <p>沈黙は、何も送っていない状態ではありません。返事までの時間や言いよどみは、言葉の内容とは別のところで相手の気持ちを伝えています。</p>
+        <p>だから沈黙をノイズとして取り除くのではなく、ひとつの信号として読む。そう考えると、会話の見え方が少し変わります。</p>
+      </article>
 
-        <a class="column-card" href="#">
-          <div class="card-top">
-            <span class="card-category">異文化コミュニケーション</span>
-            <span class="card-date">2026.06</span>
-          </div>
-          <h2>「察する」文化と「言う」文化のあいだの翻訳者として</h2>
-          <p>ハイコンテクスト/ローコンテクストという枠組みを、実際の翻訳作業に照らして考え直した記録。</p>
-          <span class="card-go">読む →</span>
-        </a>
-
-      </div>
-
-      <p class="empty-note">
-        ここは仮のコラムです。実際の考察や成果物に差し替えて使ってください。
-      </p>
+      <p class="empty-note">ここは仮のコラムです。実際の考察や成果に差し替えて使ってください。</p>
     </div>
   </section>
 </main>
