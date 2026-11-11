@@ -172,6 +172,74 @@
   }
   article.column p:last-child { margin-bottom: 0; }
 
+  .dict-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 30px;
+    padding: 20px 22px;
+    background: var(--navy-800);
+    border: 1px solid rgba(143,177,255,0.16);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--ivory-100);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  }
+  .dict-box::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--yellow-400);
+  }
+  .dict-box:hover, .dict-box:focus-visible {
+    border-color: var(--yellow-400);
+    transform: translateY(-2px);
+    background: var(--navy-700);
+  }
+  .dict-icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: rgba(255,201,77,0.1);
+    border: 1px solid rgba(143,177,255,0.18);
+    border-radius: 12px;
+  }
+  .dict-text { flex: 1; min-width: 0; }
+  .dict-label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--yellow-300);
+    margin-bottom: 2px;
+  }
+  .dict-name {
+    display: block;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.08rem;
+    margin-bottom: 2px;
+  }
+  .dict-desc {
+    display: block;
+    font-size: 0.84rem;
+    color: var(--slate-400);
+    line-height: 1.6;
+  }
+  .dict-arrow {
+    font-size: 22px;
+    color: var(--slate-400);
+    flex-shrink: 0;
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+  .dict-box:hover .dict-arrow { color: var(--yellow-400); transform: translateX(3px); }
+
   .empty-note {
     margin-top: 36px;
     padding: 20px 22px;
@@ -223,6 +291,16 @@
       ある程度まとまった考察や、自分なりの成果を置く場所。
       本文はこのページの上でそのまま読めます。
     </p>
+
+    <a class="dict-box" href="report1.html">
+      <div class="dict-icon" aria-hidden="true">📖</div>
+      <div class="dict-text">
+        <span class="dict-label">特集</span>
+        <span class="dict-name">コミュニケーション学の用語辞典</span>
+        <span class="dict-desc">サイト内で出てくる用語を、やさしい言葉でまとめた辞典ページ。</span>
+      </div>
+      <span class="dict-arrow" aria-hidden="true">›</span>
+    </a>
   </div>
 
   <section class="columns-section">
