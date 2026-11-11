@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>コラム | コミュニケーション学</title>
+<title>コミュニケーション学の用語辞典 | コミュニケーション学</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -45,7 +45,7 @@
     background: var(--navy-900);
     color: var(--ivory-100);
     font-family: var(--font-body);
-    line-height: 1.9;
+    line-height: 1.85;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -97,7 +97,7 @@
 
   .page-hero {
     padding: clamp(48px, 8vw, 84px) clamp(20px, 6vw, 56px) clamp(24px, 5vw, 40px);
-    max-width: 760px;
+    max-width: 960px;
     margin: 0 auto;
   }
 
@@ -108,146 +108,104 @@
   h1.page-title {
     font-family: var(--font-head);
     font-weight: 800;
-    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-size: clamp(1.8rem, 4.6vw, 2.7rem);
+    line-height: 1.35;
     margin: 0 0 16px;
   }
 
   .page-lede {
+    max-width: 62ch;
     color: var(--slate-400);
     font-size: clamp(0.98rem, 1.4vw, 1.08rem);
     margin: 0;
   }
 
-  section.columns-section {
-    padding: 8px clamp(20px, 6vw, 56px) clamp(64px, 9vw, 100px);
+  section.dict-section {
+    padding: 8px clamp(20px, 6vw, 56px) clamp(48px, 8vw, 80px);
+  }
+  .section-inner { max-width: 960px; margin: 0 auto; }
+
+  table.dict {
+    width: 100%;
+    border-collapse: collapse;
   }
 
-  .section-inner { max-width: 760px; margin: 0 auto; }
+  table.dict thead th {
+    text-align: left;
+    font-family: var(--font-head);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--yellow-300);
+    padding: 0 16px 12px;
+    border-bottom: 1px solid rgba(255,201,77,0.4);
+  }
 
-  article.column {
-    padding: clamp(28px, 5vw, 44px) 0;
+  table.dict tbody td {
+    padding: 22px 16px;
+    vertical-align: top;
     border-bottom: 1px solid rgba(143,177,255,0.14);
   }
-  article.column:first-child { padding-top: 8px; }
 
-  .column-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
+  table.dict tbody tr:hover td { background: rgba(143,177,255,0.05); }
+
+  td.col-name {
+    width: 26%;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.04rem;
   }
-
-  .column-category {
+  td.col-name .en {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-body);
+    font-weight: 400;
     font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--navy-900);
-    background: var(--yellow-400);
-    padding: 4px 12px;
-    border-radius: 999px;
-  }
-  article.column:nth-child(even) .column-category {
-    background: var(--blue-500);
-    color: var(--ivory-100);
+    color: var(--slate-400);
   }
 
-  .column-date {
-    font-size: 0.8rem;
-    color: var(--slate-400);
+  td.col-year {
+    width: 12%;
     font-variant-numeric: tabular-nums;
+    color: var(--yellow-400);
+    font-weight: 700;
+    white-space: nowrap;
   }
+  tbody tr:nth-child(even) td.col-year { color: var(--blue-300); }
 
-  article.column h2 {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: clamp(1.3rem, 3vw, 1.65rem);
-    line-height: 1.5;
-    margin: 0 0 18px;
-  }
-
-  article.column p {
-    margin: 0 0 16px;
+  td.col-desc {
     color: var(--ivory-100);
-    font-size: 1rem;
-    max-width: 62ch;
+    font-size: 0.96rem;
   }
-  article.column p:last-child { margin-bottom: 0; }
 
-  .dict-box {
-    display: flex;
+  @media (max-width: 720px) {
+    table.dict thead { display: none; }
+    table.dict, table.dict tbody, table.dict tr, table.dict td { display: block; width: 100%; }
+    table.dict tbody tr {
+      padding: 20px 4px;
+      border-bottom: 1px solid rgba(143,177,255,0.14);
+    }
+    table.dict tbody td { padding: 2px 0; border: none; }
+    table.dict tbody tr:hover td { background: none; }
+    td.col-name, td.col-year { width: 100%; }
+    td.col-year { margin-bottom: 6px; font-size: 0.86rem; }
+    td.col-year::before { content: "没 "; color: var(--slate-400); font-weight: 400; }
+  }
+
+  .back-link {
+    display: inline-flex;
     align-items: center;
-    gap: 18px;
-    margin-top: 30px;
-    padding: 20px 22px;
-    background: var(--navy-800);
-    border: 1px solid rgba(143,177,255,0.16);
-    border-radius: 16px;
+    gap: 8px;
     text-decoration: none;
-    color: var(--ivory-100);
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
-  }
-  .dict-box::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: var(--yellow-400);
-  }
-  .dict-box:hover, .dict-box:focus-visible {
-    border-color: var(--yellow-400);
-    transform: translateY(-2px);
-    background: var(--navy-700);
-  }
-  .dict-icon {
-    width: 46px;
-    height: 46px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    background: rgba(255,201,77,0.1);
-    border: 1px solid rgba(143,177,255,0.18);
-    border-radius: 12px;
-  }
-  .dict-text { flex: 1; min-width: 0; }
-  .dict-label {
-    display: block;
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--yellow-300);
-    margin-bottom: 2px;
-  }
-  .dict-name {
-    display: block;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1.08rem;
-    margin-bottom: 2px;
-  }
-  .dict-desc {
-    display: block;
-    font-size: 0.84rem;
     color: var(--slate-400);
-    line-height: 1.6;
-  }
-  .dict-arrow {
-    font-size: 22px;
-    color: var(--slate-400);
-    flex-shrink: 0;
-    transition: color 0.25s ease, transform 0.25s ease;
-  }
-  .dict-box:hover .dict-arrow { color: var(--yellow-400); transform: translateX(3px); }
-
-  .empty-note {
+    font-size: 0.92rem;
     margin-top: 36px;
-    padding: 20px 22px;
-    border: 1px dashed rgba(143,177,255,0.3);
-    border-radius: 14px;
-    color: var(--slate-400);
-    font-size: 0.9rem;
+    padding: 11px 20px;
+    border: 1px solid rgba(143,177,255,0.25);
+    border-radius: 999px;
+    transition: all 0.25s ease;
   }
+  .back-link:hover, .back-link:focus-visible { color: var(--yellow-300); border-color: var(--yellow-400); }
 
   footer {
     padding: 40px clamp(20px, 6vw, 56px) calc(40px + env(safe-area-inset-bottom, 0px));
@@ -286,57 +244,100 @@
     <div class="kicker-graphic" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span>
     </div>
-    <h1 class="page-title">コラム</h1>
+    <h1 class="page-title">コミュニケーション学の用語辞典</h1>
     <p class="page-lede">
-      ある程度まとまった考察や、自分なりの成果を置く場所。
-      本文はこのページの上でそのまま読めます。
+      用語や理論を生み出した人ごとに、名前・没年・解説でまとめました。没年はすべて西暦です。
     </p>
-
-    <a class="dict-box" href="report1.html">
-      <div class="dict-icon" aria-hidden="true">📖</div>
-      <div class="dict-text">
-        <span class="dict-label">特集</span>
-        <span class="dict-name">コミュニケーション学の用語辞典</span>
-        <span class="dict-desc">サイト内で出てくる用語を、やさしい言葉でまとめた辞典ページ。</span>
-      </div>
-      <span class="dict-arrow" aria-hidden="true">›</span>
-    </a>
   </div>
 
-  <section class="columns-section">
+  <section class="dict-section">
     <div class="section-inner">
+      <table class="dict">
+        <thead>
+          <tr>
+            <th scope="col">名前</th>
+            <th scope="col">没年</th>
+            <th scope="col">解説</th>
+          </tr>
+        </thead>
+        <tbody>
 
-      <article class="column">
-        <div class="column-meta">
-          <span class="column-category">翻訳</span>
-          <span class="column-date">2026.09.20</span>
-        </div>
-        <h2>直訳と意訳のあいだで、何を選んでいるのか</h2>
-        <p>英日翻訳の課題で、同じ一文を何通りにも訳し直していて気づいたことがあります。迷っているのは単語ではなく、「誰に向けて、どんな温度で届けたいか」という点でした。</p>
-        <p>直訳は原文への忠実さを守り、意訳は読み手への届きやすさを守る。どちらを優先するかは、結局のところ送り手と受け手のどちらに立つかという選択なのだと思います。</p>
-      </article>
+          <tr>
+            <td class="col-name">ジョージ・ハーバート・ミード<span class="en">George Herbert Mead</span></td>
+            <td class="col-year">1931</td>
+            <td class="col-desc">シンボリック相互作用論の源流となった社会心理学者。人は他者の反応を通して自分を理解し、言葉などの記号を介して意味を共有すると考えた。</td>
+          </tr>
 
-      <article class="column">
-        <div class="column-meta">
-          <span class="column-category">物語の構成</span>
-          <span class="column-date">2026.09.06</span>
-        </div>
-        <h2>マンガのコマ運びは、会話のターンテイキングに似ている</h2>
-        <p>会話では、相手の話が終わるタイミングを読んで自分の番に入ります。マンガのコマ割りも、読者の視線が次のコマへ移る「間」を設計している点でよく似ています。</p>
-        <p>大きなコマで一拍置く、細かいコマで畳みかける。これは話すテンポを変えるのと同じ操作で、間の取り方そのものが一種のメッセージになっていると感じます。</p>
-      </article>
+          <tr>
+            <td class="col-name">ウォルター・リップマン<span class="en">Walter Lippmann</span></td>
+            <td class="col-year">1974</td>
+            <td class="col-desc">「疑似環境」や「ステレオタイプ」という概念を広めたジャーナリスト。人はメディアが作る頭の中の像を通して世界を見ている、と指摘した。</td>
+          </tr>
 
-      <article class="column">
-        <div class="column-meta">
-          <span class="column-category">会話分析</span>
-          <span class="column-date">2026.08.23</span>
-        </div>
-        <h2>「間」が伝えている情報量について</h2>
-        <p>沈黙は、何も送っていない状態ではありません。返事までの時間や言いよどみは、言葉の内容とは別のところで相手の気持ちを伝えています。</p>
-        <p>だから沈黙をノイズとして取り除くのではなく、ひとつの信号として読む。そう考えると、会話の見え方が少し変わります。</p>
-      </article>
+          <tr>
+            <td class="col-name">ウォーレン・ウィーバー<span class="en">Warren Weaver</span></td>
+            <td class="col-year">1978</td>
+            <td class="col-desc">シャノンの情報理論を人間のコミュニケーションに広げて紹介した数学者。送り手・媒体・ノイズ・受け手という基本モデルの普及に貢献した。</td>
+          </tr>
 
-      <p class="empty-note">ここは仮のコラムです。実際の考察や成果に差し替えて使ってください。</p>
+          <tr>
+            <td class="col-name">ハロルド・ラスウェル<span class="en">Harold Lasswell</span></td>
+            <td class="col-year">1978</td>
+            <td class="col-desc">「誰が、何を、どんな媒体で、誰に、どんな効果をもって語るか」という5つの問いでコミュニケーションを整理した政治学者。</td>
+          </tr>
+
+          <tr>
+            <td class="col-name">グレゴリー・ベイトソン<span class="en">Gregory Bateson</span></td>
+            <td class="col-year">1980</td>
+            <td class="col-desc">「ダブルバインド(二重拘束)」を提唱した人類学者。言葉の内容と、その裏にあるメッセージが食い違うとき、受け手が身動きできなくなる状態を説明した。</td>
+          </tr>
+
+          <tr>
+            <td class="col-name">マーシャル・マクルーハン<span class="en">Marshall McLuhan</span></td>
+            <td class="col-year">1980</td>
+            <td class="col-desc">「メディアはメッセージである」の言葉で知られるメディア論の先駆者。何を伝えるかだけでなく、どの媒体で伝えるかが人の認識を形づくると論じた。</td>
+          </tr>
+
+          <tr>
+            <td class="col-name">アーヴィング・ゴッフマン<span class="en">Erving Goffman</span></td>
+            <td class="col-year">1982</td>
+            <td class="col-desc">日常の対面場面を舞台になぞらえる「ドラマツルギー」を展開した社会学者。人は場面に応じて役割を演じ、相手に見せたい自分を調整しているとした。</td>
+          </tr>
+
+          <tr>
+            <td class="col-name">ウィルバー・シュラム<span class="en">Wilbur Schramm</span></td>
+            <td class="col-year">1987</td>
+            <td class="col-desc">マス・コミュニケーション研究の基礎を築いた研究者。送り手と受け手の「経験の共通部分」が重なるほど、メッセージは伝わりやすいと説明した。</td>
+          </tr>
+
+          <tr>
+            <td class="col-name">クロード・シャノン<span class="en">Claude Shannon</span></td>
+            <td class="col-year">2001</td>
+            <td class="col-desc">情報理論の創始者。通信を「送信・チャンネル・ノイズ・受信」の流れで数学的にとらえ、のちのコミュニケーションモデルの土台をつくった。</td>
+          </tr>
+
+          <tr>
+            <td class="col-name">ポール・ワツラウィック<span class="en">Paul Watzlawick</span></td>
+            <td class="col-year">2007</td>
+            <td class="col-desc">「人はコミュニケーションしないでいることはできない」と述べた心理学者。沈黙や無反応も、ひとつのメッセージとして相手に届くと考えた。</td>
+          </tr>
+
+          <tr>
+            <td class="col-name">エドワード・T・ホール<span class="en">Edward T. Hall</span></td>
+            <td class="col-year">2009</td>
+            <td class="col-desc">「ハイコンテクスト/ローコンテクスト文化」を提唱した文化人類学者。言葉にしなくても通じる文化と、言葉で明示する文化の違いを示した。</td>
+          </tr>
+
+          <tr>
+            <td class="col-name">エリザベス・ノエル=ノイマン<span class="en">Elisabeth Noelle-Neumann</span></td>
+            <td class="col-year">2010</td>
+            <td class="col-desc">「沈黙の螺旋」理論の提唱者。少数派だと感じた人ほど意見を言わなくなり、その沈黙がさらに多数派の声を大きく見せていく過程を説明した。</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <a class="back-link" href="column.html">← コラムに戻る</a>
     </div>
   </section>
 </main>
