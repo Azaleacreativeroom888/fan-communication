@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>コラム | コミュニケーション学</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-900: #0A1A36;
+    --navy-800: #12294D;
+    --navy-700: #1B3763;
+    --yellow-400: #FFC94D;
+    --yellow-300: #FFDD8A;
+    --blue-500: #3E7BFF;
+    --blue-300: #8FB1FF;
+    --ivory-100: #F4F1E6;
+    --slate-400: #8CA0C6;
+
+    --font-head: "M PLUS Rounded 1c", "Zen Kaku Gothic New", sans-serif;
+    --font-body: "Zen Kaku Gothic New", "M PLUS Rounded 1c", sans-serif;
+
+    color-scheme: dark;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --navy-900: #0A1A36;
+      --navy-800: #12294D;
+      --navy-700: #1B3763;
+      --ivory-100: #F4F1E6;
+    }
+  }
+
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  * { box-sizing: inherit; }
+
+  body {
+    margin: 0;
+    background: var(--navy-900);
+    color: var(--ivory-100);
+    font-family: var(--font-body);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+
+  .field {
+    position: relative;
+    background-image: radial-gradient(circle at 1px 1px, rgba(143,177,255,0.16) 1px, transparent 1.4px);
+    background-size: 34px 34px;
+    min-height: 60vh;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px clamp(20px, 5vw, 56px);
+    background: rgba(10, 26, 54, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(143,177,255,0.14);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .brand-mark { width: 26px; height: 26px; flex-shrink: 0; }
+
+  nav ul { list-style: none; display: flex; gap: clamp(14px, 3vw, 34px); margin: 0; padding: 0; }
+  nav a { text-decoration: none; font-size: 0.92rem; color: var(--slate-400); transition: color 0.25s ease; position: relative; }
+  nav a:hover, nav a:focus-visible { color: var(--yellow-300); }
+  nav a[aria-current="page"] { color: var(--ivory-100); }
+  nav a[aria-current="page"]::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px;
+    background: var(--yellow-400); border-radius: 2px;
+  }
+
+  .page-hero {
+    padding: clamp(48px, 8vw, 84px) clamp(20px, 6vw, 56px) clamp(24px, 5vw, 40px);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .kicker-graphic { display: flex; gap: 8px; margin-bottom: 22px; }
+  .kicker-graphic span { width: 9px; height: 9px; border-radius: 50%; background: var(--yellow-400); }
+  .kicker-graphic span:nth-child(even) { background: var(--blue-500); }
+
+  h1.page-title {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin: 0 0 16px;
+  }
+
+  .page-lede {
+    color: var(--slate-400);
+    font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+    margin: 0;
+  }
+
+  section.columns-section {
+    padding: 8px clamp(20px, 6vw, 56px) clamp(64px, 9vw, 100px);
+  }
+
+  .section-inner { max-width: 760px; margin: 0 auto; }
+
+  article.column {
+    padding: clamp(28px, 5vw, 44px) 0;
+    border-bottom: 1px solid rgba(143,177,255,0.14);
+  }
+  article.column:first-child { padding-top: 8px; }
+
+  .column-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .column-category {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--navy-900);
+    background: var(--yellow-400);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+  article.column:nth-child(even) .column-category {
+    background: var(--blue-500);
+    color: var(--ivory-100);
+  }
+
+  .column-date {
+    font-size: 0.8rem;
+    color: var(--slate-400);
+    font-variant-numeric: tabular-nums;
+  }
+
+  article.column h2 {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+    line-height: 1.5;
+    margin: 0 0 18px;
+  }
+
+  article.column p {
+    margin: 0 0 16px;
+    color: var(--ivory-100);
+    font-size: 1rem;
+    max-width: 62ch;
+  }
+  article.column p:last-child { margin-bottom: 0; }
+
+  .dict-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 30px;
+    padding: 20px 22px;
+    background: var(--navy-800);
+    border: 1px solid rgba(143,177,255,0.16);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--ivory-100);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  }
+  .dict-box::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--yellow-400);
+  }
+  .dict-box:hover, .dict-box:focus-visible {
+    border-color: var(--yellow-400);
+    transform: translateY(-2px);
+    background: var(--navy-700);
+  }
+  .dict-icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: rgba(255,201,77,0.1);
+    border: 1px solid rgba(143,177,255,0.18);
+    border-radius: 12px;
+  }
+  .dict-text { flex: 1; min-width: 0; }
+  .dict-label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--yellow-300);
+    margin-bottom: 2px;
+  }
+  .dict-name {
+    display: block;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.08rem;
+    margin-bottom: 2px;
+  }
+  .dict-desc {
+    display: block;
+    font-size: 0.84rem;
+    color: var(--slate-400);
+    line-height: 1.6;
+  }
+  .dict-arrow {
+    font-size: 22px;
+    color: var(--slate-400);
+    flex-shrink: 0;
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+  .dict-box:hover .dict-arrow { color: var(--yellow-400); transform: translateX(3px); }
+
+  .empty-note {
+    margin-top: 36px;
+    padding: 20px 22px;
+    border: 1px dashed rgba(143,177,255,0.3);
+    border-radius: 14px;
+    color: var(--slate-400);
+    font-size: 0.9rem;
+  }
+
+  footer {
+    padding: 40px clamp(20px, 6vw, 56px) calc(40px + env(safe-area-inset-bottom, 0px));
+    text-align: center;
+    color: var(--slate-400);
+    font-size: 0.85rem;
+  }
+  footer .brand-mark { margin: 0 auto 14px; }
+
+  ::selection { background: var(--yellow-400); color: var(--navy-900); }
+  :focus-visible { outline: 2px solid var(--yellow-400); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="17" fill="var(--yellow-400)"/>
+      <path d="M20 20 L34 12 A17 17 0 1 1 34 28 Z" fill="var(--navy-900)"/>
+    </svg>
+    コミュニケーション学
+  </a>
+  <nav aria-label="サイト内ナビゲーション">
+    <ul>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="blog.html">ブログ</a></li>
+      <li><a href="column.html" aria-current="page">コラム</a></li>
+      <li><a href="about.html">このサイトについて</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="field">
+  <div class="page-hero">
+    <div class="kicker-graphic" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <h1 class="page-title">コラム</h1>
+    <p class="page-lede">
+      ある程度まとまった考察や、自分なりの成果を置く場所。
+      本文はこのページの上でそのまま読めます。
+    </p>
+
+    <a class="dict-box" href="report1.html">
+      <div class="dict-icon" aria-hidden="true">📖</div>
+      <div class="dict-text">
+        <span class="dict-label">特集</span>
+        <span class="dict-name">コミュニケーション学の用語辞典</span>
+        <span class="dict-desc">サイト内で出てくる用語を、やさしい言葉でまとめた辞典ページ。</span>
+      </div>
+      <span class="dict-arrow" aria-hidden="true">›</span>
+    </a>
+  </div>
+
+  <section class="columns-section">
+    <div class="section-inner">
+
+      <article class="column">
+        <div class="column-meta">
+          <span class="column-category">翻訳</span>
+          <span class="column-date">2026.09.20</span>
+        </div>
+        <h2>直訳と意訳のあいだで、何を選んでいるのか</h2>
+        <p>英日翻訳の課題で、同じ一文を何通りにも訳し直していて気づいたことがあります。迷っているのは単語ではなく、「誰に向けて、どんな温度で届けたいか」という点でした。</p>
+        <p>直訳は原文への忠実さを守り、意訳は読み手への届きやすさを守る。どちらを優先するかは、結局のところ送り手と受け手のどちらに立つかという選択なのだと思います。</p>
+      </article>
+
+      <article class="column">
+        <div class="column-meta">
+          <span class="column-category">物語の構成</span>
+          <span class="column-date">2026.09.06</span>
+        </div>
+        <h2>マンガのコマ運びは、会話のターンテイキングに似ている</h2>
+        <p>会話では、相手の話が終わるタイミングを読んで自分の番に入ります。マンガのコマ割りも、読者の視線が次のコマへ移る「間」を設計している点でよく似ています。</p>
+        <p>大きなコマで一拍置く、細かいコマで畳みかける。これは話すテンポを変えるのと同じ操作で、間の取り方そのものが一種のメッセージになっていると感じます。</p>
+      </article>
+
+      <article class="column">
+        <div class="column-meta">
+          <span class="column-category">会話分析</span>
+          <span class="column-date">2026.08.23</span>
+        </div>
+        <h2>「間」が伝えている情報量について</h2>
+        <p>沈黙は、何も送っていない状態ではありません。返事までの時間や言いよどみは、言葉の内容とは別のところで相手の気持ちを伝えています。</p>
+        <p>だから沈黙をノイズとして取り除くのではなく、ひとつの信号として読む。そう考えると、会話の見え方が少し変わります。</p>
+      </article>
+
+      <p class="empty-note">ここは仮のコラムです。実際の考察や成果に差し替えて使ってください。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <svg class="brand-mark" viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+    <circle cx="20" cy="20" r="17" fill="var(--yellow-400)"/>
+    <path d="M20 20 L34 12 A17 17 0 1 1 34 28 Z" fill="var(--navy-900)"/>
+  </svg>
+  <div>コミュニケーション学 — 伝える、伝わる、そのあいだ</div>
+</footer>
+
+</body>
+</html>
